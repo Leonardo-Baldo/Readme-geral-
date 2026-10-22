@@ -1,5 +1,9 @@
 # 🎓 Repositório de Certificados & Portfólio Interativo
 
+> *De forma geral, utilizarei esse portfólio para demonstrar minhas competências técnicas, desenvolvidas com IA, Java, HTML, CSS, JavaScript e DB futuramente.*
+
+---
+
 Este repositório possui duas partes complementares:
 
 1. 📂 **A pasta [`meus-certificados/`](meus-certificados/):** Onde ficam salvos os arquivos físicos (PDFs e imagens) dos seus certificados reais, versionados pelo Git para que qualquer pessoa que clone o repositório possa acessá-los.
@@ -13,6 +17,7 @@ Coloque seus arquivos dentro da pasta [`meus-certificados/`](meus-certificados/)
 
 ```text
 meus-certificados/
+├── devops/           # Bootcamp, IA, Agentes, Chatbots e Engenharia de Prompts
 ├── tecnologia/       # Cursos de Programação, Dados, IA, Engenharia de Software
 ├── cloud-devops/     # AWS, Azure, Google Cloud, Docker, Kubernetes
 ├── gestao-agil/      # Scrum, Kanban, Liderança, Metodologias Ágeis
