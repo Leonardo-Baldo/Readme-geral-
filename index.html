@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meu Portfólio de Certificados | Repositório Ilimitado</title>
+  <meta name="description" content="Organizador e exibidor profissional de certificados, cursos e certificações sem limites de armazenamento, com suporte a imagens e PDFs.">
+  
+  <!-- Google Fonts: Plus Jakarta Sans & Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="dark-theme">
+  <!-- Dynamic Background Glow Elements -->
+  <div class="bg-glow bg-glow-1"></div>
+  <div class="bg-glow bg-glow-2"></div>
+  <div class="bg-glow bg-glow-3"></div>
+
+  <!-- Header Section -->
+  <header class="app-header">
+    <div class="header-container">
+      <div class="brand">
+        <div class="brand-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 15l-2 5l9-13h-7l2-5l-9 13h7z"></path>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <h1>Certify<span>Vault</span></h1>
+          <div class="brand-badge">
+            <span class="status-dot"></span>
+            Armazenamento Ilimitado & Local
+          </div>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <button id="themeToggleBtn" class="btn btn-icon" title="Alternar tema Claro/Escuro" aria-label="Alternar tema">
+          <svg id="themeIconSun" class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg id="themeIconMoon" class="icon hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+
+        <div class="dropdown">
+          <button id="backupMenuBtn" class="btn btn-secondary" aria-haspopup="true">
+            <svg class="btn-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            <span>Backup & Dados</span>
+            <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+          <div id="backupDropdown" class="dropdown-menu">
+            <button id="exportBackupBtn" class="dropdown-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+              Exportar Backup (.json)
+            </button>
+            <label class="dropdown-item file-label">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Importar Backup (.json)
+              <input type="file" id="importBackupInput" accept=".json" class="hidden">
+            </label>
+            <div class="dropdown-divider"></div>
+            <button id="loadDemoBtn" class="dropdown-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              Carregar Certificados de Exemplo
+            </button>
+            <button id="clearAllBtn" class="dropdown-item danger">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+              Limpar Todos os Certificados
+            </button>
+          </div>
+        </div>
+
+        <button id="openAddModalBtn" class="btn btn-primary glow-effect">
+          <svg class="btn-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+          </svg>
+          <span>Novo Certificado</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="main-content">
+    
+    <!-- Hero / Headline -->
+    <section class="hero-section">
+      <div class="hero-content">
+        <h2 class="hero-title">Seu Histórico de <span class="gradient-text">Conquistas & Certificações</span></h2>
+        <p class="hero-subtitle">
+          Adicione, organize e apresente todos os seus diplomas e certificados em um só lugar. Os arquivos são salvos diretamente no seu navegador através de <strong>IndexedDB</strong>, sem limite de quantidade ou tamanho artificial.
+        </p>
+      </div>
+      
+      <!-- Metrics & Statistics Bar -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon-wrapper icon-blue">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+              <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+            </svg>
+          </div>
+          <div class="stat-info">
+            <span class="stat-value" id="statTotalCerts">0</span>
+            <span class="stat-label">Certificados</span>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon-wrapper icon-purple">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+          </div>
+          <div class="stat-info">
+            <span class="stat-value" id="statTotalHours">0h</span>
+            <span class="stat-label">Carga Horária Total</span>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon-wrapper icon-emerald">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+              <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+          </div>
+          <div class="stat-info">
+            <span class="stat-value" id="statTotalIssuers">0</span>
+            <span class="stat-label">Instituições / Plataformas</span>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon-wrapper icon-amber">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+            </svg>
+          </div>
+          <div class="stat-info">
+            <span class="stat-value" id="statTotalSkills">0</span>
+            <span class="stat-label">Habilidades Catalogadas</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Filters, Search & View Controls Bar -->
+    <section class="controls-section">
+      <div class="search-wrapper">
+        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input type="text" id="searchInput" placeholder="Pesquise por nome do curso, instituição, competência (ex: Python, AWS, Scrum)..." autocomplete="off">
+        <button id="clearSearchBtn" class="clear-btn hidden" title="Limpar pesquisa">&times;</button>
+      </div>
+
+      <div class="filter-row">
+        <!-- Category Filter Pills -->
+        <div class="category-pills" id="categoryPills">
+          <button class="pill active" data-category="ALL">Todos (<span id="countAll">0</span>)</button>
+          <button class="pill" data-category="Tecnologia">Tecnologia & Dev</button>
+          <button class="pill" data-category="Cloud & DevOps">Cloud & DevOps</button>
+          <button class="pill" data-category="Gestão & Negócios">Gestão & Ágil</button>
+          <button class="pill" data-category="Idiomas">Idiomas</button>
+          <button class="pill" data-category="Design & UX">Design & UX</button>
+          <button class="pill" data-category="Acadêmico">Graduação & Pós</button>
+          <button class="pill" data-category="Outros">Outros</button>
+        </div>
+
+        <!-- Right Side Options: Sort & View Mode -->
+        <div class="display-options">
+          <div class="select-wrapper">
+            <select id="sortSelect" title="Ordenar certificados">
+              <option value="newest">Mais recentes primeiro</option>
+              <option value="oldest">Mais antigos primeiro</option>
+              <option value="hours-desc">Maior carga horária</option>
+              <option value="title-asc">Nome (A - Z)</option>
+              <option value="issuer-asc">Instituição (A - Z)</option>
+            </select>
+          </div>
+
+          <div class="view-switch" role="group" aria-label="Visualização">
+            <button id="viewGridBtn" class="view-btn active" title="Visualização em Grade">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="3" width="7" height="7"></rect>
+                <rect x="14" y="3" width="7" height="7"></rect>
+                <rect x="14" y="14" width="7" height="7"></rect>
+                <rect x="3" y="14" width="7" height="7"></rect>
+              </svg>
+            </button>
+            <button id="viewListBtn" class="view-btn" title="Visualização em Lista">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="8" y1="6" x2="21" y2="6"></line>
+                <line x1="8" y1="12" x2="21" y2="12"></line>
+                <line x1="8" y1="18" x2="21" y2="18"></line>
+                <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                <line x1="3" y1="18" x2="3.01" y2="18"></line>
+              </svg>
+            </button>
+            <button id="viewTimelineBtn" class="view-btn" title="Linha do Tempo">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 14 14"></polyline>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Certificate Gallery / List Container -->
+    <section class="certificates-section">
+      <!-- Status Feedback / Counter -->
+      <div class="results-info">
+        <span id="resultsCountText">Mostrando 0 certificados</span>
+        <div id="activeFiltersBadge" class="active-filter-badge hidden">
+          Filtro ativo: <span id="currentFilterName"></span>
+          <button id="resetFilterBtn">&times;</button>
+        </div>
+      </div>
+
+      <!-- Main Display Container -->
+      <div id="certificatesContainer" class="certificates-grid">
+        <!-- Rendered dynamically via JavaScript -->
+      </div>
+
+      <!-- Empty State -->
+      <div id="emptyState" class="empty-state hidden">
+        <div class="empty-icon-box">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+          </svg>
+        </div>
+        <h3 id="emptyTitle">Nenhum certificado cadastrado ainda</h3>
+        <p id="emptyDescription">Comece a construir sua galeria agora mesmo adicionando seus diplomas, certificados de cursos ou certificações internacionais.</p>
+        <div class="empty-actions">
+          <button id="emptyAddBtn" class="btn btn-primary glow-effect">
+            <svg class="btn-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+            Cadastrar Primeiro Certificado
+          </button>
+          <button id="emptyDemoBtn" class="btn btn-secondary">
+            Carregar Modelos de Exemplo
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modal: Adicionar / Editar Certificado -->
+  <div id="certModal" class="modal-backdrop" aria-hidden="true" role="dialog">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <div class="modal-icon-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <line x1="12" y1="18" x2="12" y2="12"></line>
+              <line x1="9" y1="15" x2="15" y2="15"></line>
+            </svg>
+          </div>
+          <div>
+            <h3 id="modalTitle">Adicionar Certificado</h3>
+            <p class="modal-subtitle">Preencha as informações da sua conquista e anexe o comprovante</p>
+          </div>
+        </div>
+        <button id="closeCertModalBtn" class="modal-close-btn" aria-label="Fechar">&times;</button>
+      </div>
+
+      <form id="certForm" class="modal-body">
+        <input type="hidden" id="certId">
+        
+        <div class="form-grid">
+          <!-- Curso / Certificação -->
+          <div class="form-group full-width">
+            <label for="certTitleInput" class="form-label required">Nome do Curso / Certificação</label>
+            <input type="text" id="certTitleInput" class="form-input" placeholder="Ex: Formação Engenheiro de Dados com Python" required>
+          </div>
+
+          <!-- Instituição Emissora -->
+          <div class="form-group">
+            <label for="certIssuerInput" class="form-label required">Instituição Emissora</label>
+            <input type="text" id="certIssuerInput" class="form-input" placeholder="Ex: Alura, Coursera, AWS, Google, Harvard..." required>
+          </div>
+
+          <!-- Categoria -->
+          <div class="form-group">
+            <label for="certCategoryInput" class="form-label required">Área / Categoria</label>
+            <select id="certCategoryInput" class="form-input" required>
+              <option value="Tecnologia">Tecnologia & Dev</option>
+              <option value="Cloud & DevOps">Cloud & DevOps</option>
+              <option value="Gestão & Negócios">Gestão & Ágil</option>
+              <option value="Idiomas">Idiomas</option>
+              <option value="Design & UX">Design & UX</option>
+              <option value="Acadêmico">Graduação & Pós</option>
+              <option value="Outros">Outros</option>
+            </select>
+          </div>
+
+          <!-- Data de Conclusão -->
+          <div class="form-group">
+            <label for="certDateInput" class="form-label required">Data de Emissão / Conclusão</label>
+            <input type="date" id="certDateInput" class="form-input" required>
+          </div>
+
+          <!-- Carga Horária -->
+          <div class="form-group">
+            <label for="certHoursInput" class="form-label">Carga Horária (em Horas)</label>
+            <input type="number" id="certHoursInput" class="form-input" placeholder="Ex: 40" min="0" step="0.5">
+          </div>
+
+          <!-- Código ou ID de Validação -->
+          <div class="form-group">
+            <label for="certCodeInput" class="form-label">Código da Credencial / ID (opcional)</label>
+            <input type="text" id="certCodeInput" class="form-input" placeholder="Ex: ABC-12345678-XYZ">
+          </div>
+
+          <!-- Link de Validação Online -->
+          <div class="form-group">
+            <label for="certUrlInput" class="form-label">Link de Validação Online (opcional)</label>
+            <input type="url" id="certUrlInput" class="form-input" placeholder="https://exemplo.com/verificar/12345">
+          </div>
+
+          <!-- Habilidades / Tags -->
+          <div class="form-group full-width">
+            <label for="certSkillsInput" class="form-label">Competências Adquiridas (separadas por vírgula)</label>
+            <input type="text" id="certSkillsInput" class="form-input" placeholder="Ex: Python, Pandas, Machine Learning, SQL, Docker">
+            <span class="form-hint">Dica: essas tags ajudarão a filtrar e encontrar certificados rapidamente.</span>
+          </div>
+
+          <!-- Upload de Arquivo / Dropzone -->
+          <div class="form-group full-width">
+            <label class="form-label required">Comprovante / Anexo (Imagem ou PDF)</label>
+            <div id="dropZone" class="file-dropzone">
+              <input type="file" id="certFileInput" accept="image/*,application/pdf" class="hidden-file-input">
+              <div id="dropZonePrompt" class="dropzone-content">
+                <div class="dropzone-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="17 8 12 3 7 8"></polyline>
+                    <line x1="12" y1="3" x2="12" y2="15"></line>
+                  </svg>
+                </div>
+                <div class="dropzone-text">
+                  <strong>Arraste o arquivo aqui</strong> ou <span class="highlight-link">clique para selecionar</span>
+                  <div class="dropzone-types">Suporta Imagens (PNG, JPG, WEBP, SVG) e Documentos (PDF)</div>
+                </div>
+              </div>
+
+              <!-- Preview do Arquivo Selecionado -->
+              <div id="filePreviewContainer" class="file-preview-box hidden">
+                <div id="previewMediaBox" class="preview-media">
+                  <!-- Image thumbnail or PDF icon inserted dynamically -->
+                </div>
+                <div class="preview-details">
+                  <div id="previewFileName" class="preview-name">certificado.png</div>
+                  <div id="previewFileSize" class="preview-size">1.4 MB</div>
+                  <div class="preview-actions">
+                    <button type="button" id="removeFileBtn" class="btn btn-sm btn-danger-soft">Trocar Arquivo</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Observações / Anotações -->
+          <div class="form-group full-width">
+            <label for="certNotesInput" class="form-label">Observações / Resumo Pessoal (opcional)</label>
+            <textarea id="certNotesInput" class="form-input textarea" rows="2" placeholder="Ex: Projeto final desenvolvido com nota máxima, cobriu testes unitários e CI/CD..."></textarea>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" id="cancelCertModalBtn" class="btn btn-secondary">Cancelar</button>
+          <button type="submit" id="saveCertBtn" class="btn btn-primary glow-effect">
+            <svg class="btn-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            Salvar Certificado
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal: Visualizador Completo / Lightbox de Certificado -->
+  <div id="viewerModal" class="modal-backdrop viewer-backdrop" aria-hidden="true" role="dialog">
+    <div class="viewer-container">
+      <!-- Viewer Header -->
+      <div class="viewer-header">
+        <div class="viewer-title-box">
+          <span class="viewer-category-tag" id="viewModalCategory">Tecnologia</span>
+          <h2 id="viewModalTitle">Título do Certificado</h2>
+          <div class="viewer-issuer" id="viewModalIssuer">Instituição</div>
+        </div>
+        <div class="viewer-top-actions">
+          <button id="viewerDownloadBtn" class="btn btn-icon-secondary" title="Baixar Arquivo Original">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+          </button>
+          <button id="viewerPrintBtn" class="btn btn-icon-secondary" title="Imprimir / Salvar em PDF">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 6 2 18 2 18 9"></polyline>
+              <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+              <rect x="6" y="14" width="12" height="8"></rect>
+            </svg>
+          </button>
+          <button id="viewerEditBtn" class="btn btn-icon-secondary" title="Editar Informações">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+              <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+            </svg>
+          </button>
+          <button id="viewerDeleteBtn" class="btn btn-icon-secondary danger-icon" title="Excluir Certificado">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="3 6 5 6 21 6"></polyline>
+              <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+            </svg>
+          </button>
+          <button id="closeViewerModalBtn" class="modal-close-btn" aria-label="Fechar visualizador">&times;</button>
+        </div>
+      </div>
+
+      <!-- Viewer Body -->
+      <div class="viewer-body">
+        <div class="viewer-display-panel">
+          <div id="viewerMediaContainer" class="viewer-media-wrap">
+            <!-- Image or PDF viewer rendered here -->
+          </div>
+          <div class="viewer-zoom-controls" id="zoomControls">
+            <button id="zoomOutBtn" title="Reduzir Zoom">-</button>
+            <span id="zoomLevelText">100%</span>
+            <button id="zoomInBtn" title="Aumentar Zoom">+</button>
+            <button id="zoomResetBtn" title="Ajustar à Tela">Reset</button>
+          </div>
+        </div>
+
+        <!-- Viewer Info Sidebar -->
+        <aside class="viewer-info-panel">
+          <h4 class="info-panel-title">Detalhes da Certificação</h4>
+
+          <div class="info-list">
+            <div class="info-item">
+              <span class="info-label">Data de Conclusão</span>
+              <span class="info-value" id="viewModalDate">-</span>
+            </div>
+
+            <div class="info-item">
+              <span class="info-label">Carga Horária</span>
+              <span class="info-value" id="viewModalHours">-</span>
+            </div>
+
+            <div class="info-item" id="viewModalCodeWrap">
+              <span class="info-label">ID / Código da Credencial</span>
+              <div class="copyable-code">
+                <span class="info-value code-font" id="viewModalCode">-</span>
+                <button id="copyCodeBtn" class="btn-copy" title="Copiar Código">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <div class="info-item" id="viewModalUrlWrap">
+              <span class="info-label">Autenticação Online</span>
+              <a href="#" target="_blank" rel="noopener noreferrer" class="link-external" id="viewModalUrl">
+                <span>Verificar no site oficial</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                  <polyline points="15 3 21 3 21 9"></polyline>
+                  <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
+              </a>
+            </div>
+
+            <div class="info-item full-width" id="viewModalSkillsWrap">
+              <span class="info-label">Habilidades & Tecnologias</span>
+              <div class="skills-tag-list" id="viewModalSkills">
+                <!-- Skill badges dynamically inserted -->
+              </div>
+            </div>
+
+            <div class="info-item full-width" id="viewModalNotesWrap">
+              <span class="info-label">Anotações</span>
+              <p class="notes-text" id="viewModalNotes"></p>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification System -->
+  <div id="toastContainer" class="toast-container" aria-live="polite"></div>
+
+  <!-- Scripts -->
+  <script src="app.js"></script>
+</body>
+</html>
